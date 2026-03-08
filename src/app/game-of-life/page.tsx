@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { cellKey, computeNextGeneration, type CellSet } from "./gameLogic";
 
 const CELL_SIZE = 16; // px
@@ -216,38 +217,31 @@ export default function GameOfLifePage() {
         </p>
 
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => setIsPlaying((p) => !p)}
-            className="rounded-md px-3 py-1.5 text-sm font-medium transition-colors bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
-          >
+          <Button size="sm" onClick={() => setIsPlaying((p) => !p)}>
             {isPlaying ? "Pause" : "Play"}
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
             onClick={stepForward}
             disabled={isPlaying}
-            className="rounded-md border border-zinc-300 dark:border-zinc-700 px-3 py-1.5 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Next →
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
             onClick={resetView}
-            className="rounded-md border border-zinc-300 dark:border-zinc-700 px-3 py-1.5 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             title="Re-center view on origin"
           >
             ⌖ Center
-          </button>
-          <button
-            onClick={clearGrid}
-            className="rounded-md border border-zinc-300 dark:border-zinc-700 px-3 py-1.5 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          >
+          </Button>
+          <Button variant="destructive" size="sm" onClick={clearGrid}>
             Clear
-          </button>
-          <Link
-            href="/"
-            className="text-sm text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors"
-          >
+          </Button>
+          <Button variant="link" size="sm" render={<Link href="/" />}>
             ← Back
-          </Link>
+          </Button>
         </div>
       </div>
 

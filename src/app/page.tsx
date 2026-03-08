@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -35,12 +37,13 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full bg-zinc-900 px-5 text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-black dark:hover:bg-zinc-300 md:w-[158px]"
-            href="/game-of-life"
+          <Button
+            size="lg"
+            className="rounded-full px-5"
+            render={<Link href="/game-of-life" />}
           >
             Game of Life
-          </a>
+          </Button>
         </div>
       </main>
     </div>
